@@ -863,7 +863,7 @@ const handleFormSubmit = async (e) => {
   const message = form.message.value;
 
   try {
-    const res = await fetch('https://personal-portfolio-98vx6dga9-satish-kumar-dhurves-projects.vercel.app/api/contact', {
+    const res = await fetch('https://personal-portfolio-98vx6dga9-satish-kumar-dhurves-projects.vercel.app/api/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
