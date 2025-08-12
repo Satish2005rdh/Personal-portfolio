@@ -863,7 +863,7 @@ const handleFormSubmit = async (e) => {
   const message = form.message.value;
 
   try {
-    const res = await fetch('https://personal-portfolio-omega-seven-19.vercel.app/', {
+    const res = await fetch('https://personal-portfolio-omega-seven-19.vercel.app/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
