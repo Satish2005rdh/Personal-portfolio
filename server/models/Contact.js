@@ -6,7 +6,5 @@ const contactSchema = new mongoose.Schema({
   email: String,
   subject: String,
   message: String,
-  date: { type: Date, default: Date.now }
-});
-
-module.exports = mongoose.model('Contact', contactSchema);
+}, { timestamps: true });
+module.exports = mongoose.models.Contact || mongoose.model('Contact', contactSchema);

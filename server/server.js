@@ -2,24 +2,29 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-
-// Load .env before doing anything else
+const connectDB = require('./config/db');
+const contactRoutes = require('./routes/contact');
+// Load .env
 dotenv.config();
 
-// DB connection
-const connectDB = require('./config/db');
-connectDB();  // ✅ Now it will use the MONGO_URI from .env
-
-const contactRoutes = require('./routes/contact');
+// Connect to MongoDB (cached for Vercel)
+connectDB();
 
 const app = express();
 
-// Middlewares
-app.use(cors());
+// Allow frontend to connect (both local and deployed)
+app.use(cors({
+  origin: [
+    'https://personal-portfolio-9i23.vercel.app/' // Deployed frontend
+  ],
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));
+
 app.use(express.json());
 
 // Routes
 app.use('/api', contactRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running at http://localhost:${PORT}`));
+// Export app for Vercel serverless
+module.exports = app;
