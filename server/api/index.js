@@ -11,9 +11,11 @@ const app = express();
 
 app.use(cors({
   origin: [
-    'http://localhost:3000/',
+    // 'http://localhost:3000/',
     'https://personal-portfolio-9i23.vercel.app/' // Deployed frontend
-  ]
+  ],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
 }));
 app.use(express.json());
 

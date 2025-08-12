@@ -15,7 +15,7 @@ const app = express();
 // Allow frontend to connect (both local and deployed)
 app.use(cors({
   origin: [
-    'http://localhost:3000/',
+    // 'http://localhost:3000/',
     'https://personal-portfolio-9i23.vercel.app/' // Deployed frontend
   ],
   methods: ['GET', 'POST'],
